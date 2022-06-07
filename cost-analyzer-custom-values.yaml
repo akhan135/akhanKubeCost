@@ -3,13 +3,13 @@ reporting:
   valuesReporting: false
 # generated at http://kubecost.com/install, used for alerts tracking and free trials
 kubecostToken: "bGFuQHJhZmF5LmNvxm343yadf98"
-​
+
 # Define persistence volume for cost-analyzer, more information at https://github.com/kubecost/docs/blob/master/storage.md
 persistentVolume:
   size: 2Gi
   dbSize: 2.0Gi
   enabled: true
-​
+
 # Basic Kubecost ingress, more examples available at https://github.com/kubecost/docs/blob/master/ingress-examples.md
 ingress:
   enabled: true
@@ -25,7 +25,7 @@ ingress:
     - secretName: cost-analyzer-tls
       hosts:
         - kubecost.{{{ .global.Rafay.ClusterName }}}.training.gorafay.net
-​
+
 prometheus:
   server:
     global:
