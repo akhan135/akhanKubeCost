@@ -1,0 +1,39 @@
+## Custom values for kubecost
+reporting:
+  valuesReporting: false
+# generated at http://kubecost.com/install, used for alerts tracking and free trials
+kubecostToken: "bGFuQHJhZmF5LmNvxm343yadf98"
+​
+# Define persistence volume for cost-analyzer, more information at https://github.com/kubecost/docs/blob/master/storage.md
+persistentVolume:
+  size: 2Gi
+  dbSize: 2.0Gi
+  enabled: true
+​
+# Basic Kubecost ingress, more examples available at https://github.com/kubecost/docs/blob/master/ingress-examples.md
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-http"
+    acme.cert-manager.io/http01-edit-in-place: "true"
+  paths: ["/"]
+  pathType: ImplementationSpecific
+  hosts:
+    - kubecost.{{{ .global.Rafay.ClusterName }}}.training.gorafay.net
+  tls:
+    - secretName: cost-analyzer-tls
+      hosts:
+        - kubecost.{{{ .global.Rafay.ClusterName }}}.training.gorafay.net
+​
+prometheus:
+  server:
+    global:
+      scrape_interval: 1m
+      scrape_timeout: 10s
+      evaluation_interval: 1m
+      external_labels:
+        cluster_id: {{{ .global.Rafay.ClusterName }}}
+    persistentVolume:
+      size: 2Gi
+      enabled: true
