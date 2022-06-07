@@ -1,4 +1,4 @@
-## Custom values for kubecost
+# Custom values for kubecost
 reporting:
   valuesReporting: false
 # generated at http://kubecost.com/install, used for alerts tracking and free trials
