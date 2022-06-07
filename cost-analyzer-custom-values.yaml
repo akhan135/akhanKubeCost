@@ -20,11 +20,11 @@ ingress:
   paths: ["/"]
   pathType: ImplementationSpecific
   hosts:
-    - kubecost.{{{ .global.Rafay.ClusterName }}}.training.gorafay.net
+    - kubecost.aksmkscluster.training.gorafay.net
   tls:
     - secretName: cost-analyzer-tls
       hosts:
-        - kubecost.{{{ .global.Rafay.ClusterName }}}.training.gorafay.net
+        - kubecost.aksmkscluster.training.gorafay.net
 
 prometheus:
   server:
@@ -33,7 +33,7 @@ prometheus:
       scrape_timeout: 10s
       evaluation_interval: 1m
       external_labels:
-        cluster_id: {{{ .global.Rafay.ClusterName }}}
+        cluster_id: aksmkscluster
     persistentVolume:
       size: 2Gi
       enabled: true
